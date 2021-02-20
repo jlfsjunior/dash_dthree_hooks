@@ -1,0 +1,7 @@
+include dash_dthree_hooks/dash_dthree_hooks.min.js
+include dash_dthree_hooks/dash_dthree_hooks.min.js.map
+include dash_dthree_hooks/metadata.json
+include dash_dthree_hooks/package-info.json
+include README.md
+include LICENSE
+include package.json
