@@ -53,12 +53,11 @@ def change_data(n_clicks):
     [Input("bubble-chart", 'clicked')]
 )
 def click_point(datum):
-
-    print(datum)
-
-    datum_str = json.dumps(datum)
-
-    return datum_str
+    if datum is None:
+        return "Click on something!"
+    else:
+        datum_str = json.dumps(datum)
+        return datum_str
 
 if __name__ == '__main__':
     app.run_server(debug=True)
