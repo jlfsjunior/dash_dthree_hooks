@@ -8,7 +8,7 @@ import * as d3 from 'd3';
 /**
  * Bubble component using d3 and hooks
  */
-const Bubble = ({id, width, height, data}) => {
+const Bubble = ({id, setProps, data, clicked}) => {
     
     const svgRef = useRef(null);
     const wrapperRef = useRef(null);
@@ -17,8 +17,6 @@ const Bubble = ({id, width, height, data}) => {
     useEffect(() => {
 
       if (!data || !svgRef.current || !dimensions) return;
-
-      console.log(dimensions)
 
       const svg = d3.select(svgRef.current)
 
@@ -64,6 +62,9 @@ const Bubble = ({id, width, height, data}) => {
         .attr("cx", d => xScale(d.x))
         .attr("cy", d => yScale(d.y))
         .attr("fill", d => d.color)
+        .on('click', (event, d) => {
+          setProps({"clicked": d})
+        })
         .transition()
           .duration(transitionDuration)
           .attr("r", d => rScale(d.r))
@@ -102,5 +103,8 @@ Bubble.propTypes = {
 
     /** Data */
     data: PropTypes.array,
+
+    /** Clicked datum (use in point click callbacks) */
+    clicked: PropTypes.object,
 
 };
