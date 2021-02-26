@@ -8,14 +8,20 @@ import random
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-app.layout = html.Div([
-    dash_dthree_hooks.Bubble(
-        id='bubble-chart',
-        width=1000,
-        height=600,
-    ),
-    dbc.Button(id="update-data", children="Success", color="success", className="mr-1"),
-])
+app.layout = html.Div(
+    [
+        dash_dthree_hooks.Bubble(
+            id='bubble-chart',
+        ),
+        html.Div(
+            dbc.Button(id="update-data", children="Update Data", color="success", className="mr-1"),
+            style={"margin": "0 auto"}
+        )
+    ],
+    style={
+        "padding": "25px 50px"
+    }
+)
 
 
 @app.callback(
