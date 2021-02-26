@@ -38,6 +38,13 @@
         },
         "required": false,
         "description": "Data"
+      },
+      "clicked": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Clicked datum (use in point click callbacks)"
       }
     }
   }

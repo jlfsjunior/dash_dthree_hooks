@@ -11,14 +11,15 @@ Keyword arguments:
 - id (string; optional): The ID used to identify this component in Dash callbacks.
 - width (number; optional): Chart width
 - height (number; optional): Chart height
-- data (list; optional): Data"""
+- data (list; optional): Data
+- clicked (dict; optional): Clicked datum (use in point click callbacks)"""
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, data=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'width', 'height', 'data']
+    def __init__(self, id=Component.UNDEFINED, width=Component.UNDEFINED, height=Component.UNDEFINED, data=Component.UNDEFINED, clicked=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'width', 'height', 'data', 'clicked']
         self._type = 'Bubble'
         self._namespace = 'dash_dthree_hooks'
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'width', 'height', 'data']
+        self.available_properties = ['id', 'width', 'height', 'data', 'clicked']
         self.available_wildcard_properties =            []
 
         _explicit_args = kwargs.pop('_explicit_args')

@@ -10,7 +10,7 @@ Bubble component using d3 and hooks
 }
 
 \usage{
-bubble(id=NULL, width=NULL, height=NULL, data=NULL)
+bubble(id=NULL, width=NULL, height=NULL, data=NULL, clicked=NULL)
 }
 
 \arguments{
@@ -21,6 +21,8 @@ bubble(id=NULL, width=NULL, height=NULL, data=NULL)
 \item{height}{Numeric. Chart height}
 
 \item{data}{Unnamed list. Data}
+
+\item{clicked}{Named list. Clicked datum (use in point click callbacks)}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}
