@@ -1,8 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-bubble <- function(id=NULL, label=NULL, value=NULL) {
+bubble <- function(id=NULL, width=NULL, height=NULL, data=NULL) {
     
-    props <- list(id=id, label=label, value=value)
+    props <- list(id=id, width=width, height=height, data=data)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -10,7 +10,7 @@ bubble <- function(id=NULL, label=NULL, value=NULL) {
         props = props,
         type = 'Bubble',
         namespace = 'dash_dthree_hooks',
-        propNames = c('id', 'label', 'value'),
+        propNames = c('id', 'width', 'height', 'data'),
         package = 'dashDthreeHooks'
         )
 

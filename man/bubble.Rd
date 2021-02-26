@@ -6,19 +6,21 @@
 \title{Bubble component}
 
 \description{
-ExampleComponent is an example component. It takes a property, `label`, and displays it. It renders an input with the property `value` which is editable by the user.
+Bubble component using d3 and hooks
 }
 
 \usage{
-bubble(id=NULL, label=NULL, value=NULL)
+bubble(id=NULL, width=NULL, height=NULL, data=NULL)
 }
 
 \arguments{
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
 
-\item{label}{Character. A label that will be printed when this component is rendered.}
+\item{width}{Numeric. Chart width}
 
-\item{value}{Character. The value displayed in the input.}
+\item{height}{Numeric. Chart height}
+
+\item{data}{Unnamed list. Data}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

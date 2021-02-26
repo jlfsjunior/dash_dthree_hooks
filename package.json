@@ -16,7 +16,9 @@
   "author": "José Luiz Ferreira <jlfsjunior@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "ramda": "^0.26.1"
+    "d3": "^6.5.0",
+    "ramda": "^0.26.1",
+    "resize-observer-polyfill": "^1.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
