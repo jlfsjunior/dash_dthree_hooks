@@ -7,7 +7,15 @@ import dash_bootstrap_components as dbc
 import random
 import json
 
+import pandas as pd
+
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+df = pd.DataFrame({
+    "words": ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Bananas"],
+    "value": [4, 1, 2, 2, 4, 5],
+})
+
 
 app.layout = html.Div(
     [
