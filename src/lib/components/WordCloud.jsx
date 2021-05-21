@@ -8,18 +8,17 @@ import {useResizeObserver} from '../helpers/Hooks.jsx';
 import cloud from 'd3-cloud';
 import * as d3 from 'd3';
 
+// FIXME: Add deep copy library to allow deep object
 const defaultStyle = {
     padding: 5,
-    fill: {
-        regular: 'black',
-        hover: 'gray',
-        selected: 'red',
-    },
-    font: {
-        family: 'Cera Pro, Noto Sans',
-        sizeMin: 16,
-        sizeMax: 40,
-    },
+    fillRegular: 'black',
+    fillHover: 'gray',
+    fillSelected: 'red',
+    fontFamily: 'Cera Pro, Noto Sans',
+    fontSizeMin: 16,
+    fontSizeMax: 40,
+    fontSizeScale: 'linear', // log or sqrt
+    transitionDuration: 500,
 };
 
 /**
@@ -50,39 +49,54 @@ const WordCloud = ({
             .select('g.wordsLayer')
             .attr(
                 'transform',
-                `translate(${dimensions.width / 4},${dimensions.height / 4})`
+                `translate(${dimensions.width / 2},${dimensions.height / 2})`
             );
 
         // Style definitions
-        const chartStyle = {...style, ...defaultStyle};
+        const chartStyle = {...defaultStyle, ...style};
 
         const fill = d3.scaleOrdinal(d3.schemeCategory10);
 
         const getFill = (word) => {
-            if (!selected) return chartStyle.fill.regular;
+            if (!selected) return chartStyle.fillRegular;
 
             return selected.includes(word.id)
-                ? chartStyle.fill.selected
-                : chartStyle.fill.regular;
+                ? chartStyle.fillSelected
+                : chartStyle.fillRegular;
         };
 
-        const fontScale = d3
-            .scaleLinear()
+        const fontScaleChoices = {
+            linear: d3.scaleLinear(),
+            log: d3.scaleLog(),
+            sqrt: d3.scaleSqrt(),
+        };
+
+        const fontScale = fontScaleChoices[chartStyle.fontSizeScale || 'linear']
             .domain(d3.extent(data, (d) => d.value))
-            .range([chartStyle.font.sizeMin, chartStyle.font.sizeMax]);
+            .range([chartStyle.fontSizeMin, chartStyle.fontSizeMax]);
 
         const rotate = (word) => 0; //  word.value % 360;
+
+        const t = d3.transition().duration(chartStyle.transitionDuration);
 
         const layout = cloud()
             .size([dimensions.width, dimensions.height])
             .words(data)
-            .font(chartStyle.font.family)
+            .font(chartStyle.fontFamily)
             .padding(chartStyle.padding)
             .rotate(rotate)
             .random((val) => 1)
             .fontSize((word) => fontScale(word.value))
             .on('end', (words) => {
-                const texts = words_g.selectAll('text').data(words);
+                const texts = words_g
+                    .selectAll('text')
+                    .data(words, (d) => d.id);
+
+                texts
+                    .exit()
+                    .transition(t)
+                    .style('font-size', (d) => 0)
+                    .remove();
 
                 texts
                     .attr(
@@ -93,7 +107,7 @@ const WordCloud = ({
                     .on('mouseover', (event, word) => {
                         d3.select(event.currentTarget).style(
                             'fill',
-                            chartStyle.fill.hover
+                            chartStyle.fillHover
                         );
                     })
                     .on('mouseout', (event, word) => {
@@ -119,7 +133,7 @@ const WordCloud = ({
                     .on('mouseover', (event, word) => {
                         d3.select(event.currentTarget).style(
                             'fill',
-                            chartStyle.fill.hover
+                            chartStyle.fillHover
                         );
                     })
                     .on('mouseout', (event, word) => {
@@ -155,11 +169,8 @@ const WordCloud = ({
                         // d3.select(event.currentTarget).style('fill', getFill);
                     })
                     // transition
-                    .transition()
-                    .duration(500)
+                    .transition(t)
                     .style('font-size', (d) => `${d.size}px`);
-
-                // TODO add exit and update
             });
 
         layout.start();
