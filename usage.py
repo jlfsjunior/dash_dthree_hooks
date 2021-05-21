@@ -33,6 +33,7 @@ app.layout = html.Div(
         dash_dthree_hooks.WordCloud(
             id="wordcloud-chart",
             data=df.to_dict("records"),
+            style={"fillSelected": "blue"}
             # selected=[1, 2, 3]
         ),
         html.Div(
