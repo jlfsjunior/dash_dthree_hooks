@@ -2,7 +2,7 @@
 name = "DashDthreeHooks"
 uuid = "1b08a953-4be3-4667-9a23-b947a370dd9c"
 authors = ["José Luiz Ferreira <jlfsjunior@gmail.com>"]
-version = "0.0.1"
+version = "0.0.2"
 
 [deps]
 Dash = "1b08a953-4be3-4667-9a23-3db579824955"

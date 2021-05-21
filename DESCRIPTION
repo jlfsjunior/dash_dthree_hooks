@@ -1,6 +1,6 @@
 Package: dashDthreeHooks
 Title: Dash custom components using D3 and React Hooks
-Version: 0.0.1
+Version: 0.0.2
 Description: Dash custom components using D3 and React Hooks
 Depends: R (>= 3.0.2)
 Imports: 

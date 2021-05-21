@@ -47,5 +47,79 @@
         "description": "Clicked datum (use in point click callbacks)"
       }
     }
+  },
+  "src/lib/components/WordCloud.jsx": {
+    "description": "WordCloud component using d3 and hooks",
+    "displayName": "WordCloud",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks."
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\nto Dash, to make them available for callbacks."
+      },
+      "data": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": "Data"
+      },
+      "clicked": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Clicked word object (from d3)"
+      },
+      "clickedTimestamp": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Clicked timestamp"
+      },
+      "selected": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "number"
+          }
+        },
+        "required": false,
+        "description": "Array containing selected items\nDefaults to empty array",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      },
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Chart style",
+        "defaultValue": {
+          "value": "{\n    padding: 5,\n    fillRegular: 'black',\n    fillHover: 'gray',\n    fillSelected: 'red',\n    fontFamily: 'Cera Pro, Noto Sans',\n    fontSizeMin: 16,\n    fontSizeMax: 40,\n    fontSizeScale: 'linear', // log or sqrt\n    transitionDuration: 500,\n}",
+          "computed": false
+        }
+      },
+      "wrapperStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "wrapper div style"
+      }
+    }
   }
 }

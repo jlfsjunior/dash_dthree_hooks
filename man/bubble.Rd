@@ -10,19 +10,19 @@ Bubble component using d3 and hooks
 }
 
 \usage{
-bubble(id=NULL, width=NULL, height=NULL, data=NULL, clicked=NULL)
+bubble(id=NULL, clicked=NULL, data=NULL, height=NULL, width=NULL)
 }
 
 \arguments{
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
 
-\item{width}{Numeric. Chart width}
-
-\item{height}{Numeric. Chart height}
+\item{clicked}{Named list. Clicked datum (use in point click callbacks)}
 
 \item{data}{Unnamed list. Data}
 
-\item{clicked}{Named list. Clicked datum (use in point click callbacks)}
+\item{height}{Numeric. Chart height}
+
+\item{width}{Numeric. Chart width}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

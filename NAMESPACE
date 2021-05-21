@@ -1,4 +1,6 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 export(Bubble)
+export(WordCloud)
 export(bubble)
+export(wordCloud)
